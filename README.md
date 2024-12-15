@@ -10,4 +10,4 @@ Paper: https://ppopp25.sigplan.org/track/PPoPP-2025-Main-Conference-1 \
 Blog: https://mp.weixin.qq.com/s/KBUiKvvXqAHB0YC5XdQ4ww
 
 
-![FlashFFTStencil](assets/intro.pdf)
+![FlashFFTStencil](assets/intro.png)
