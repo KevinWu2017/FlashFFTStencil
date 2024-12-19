@@ -11,3 +11,5 @@ Blog: https://mp.weixin.qq.com/s/KBUiKvvXqAHB0YC5XdQ4ww
 
 
 ![FlashFFTStencil](assets/intro.png)
+
+If you have any questions or would like to discuss more detail, please feel free to reach out to Haozhi at **haozhi.han@stu.pku.edu.cn**.
