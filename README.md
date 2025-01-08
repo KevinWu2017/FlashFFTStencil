@@ -12,12 +12,15 @@ Blog: https://mp.weixin.qq.com/s/KBUiKvvXqAHB0YC5XdQ4ww
 
 ![FlashFFTStencil](assets/intro.png)
 
+## Contact
+
 If you have any questions or would like to discuss more detail, please feel free to reach out to Haozhi at **haozhi.han@stu.pku.edu.cn**.
 
 
 ## Installation
 
 Recommended Setup:
+
 We suggest utilizing the Nvidia PyTorch Docker container, as this library has been developed and validated using version 23.05.
 
 * This library has been tested with CUDA 12.1 and its corresponding toolkit.
@@ -36,6 +39,24 @@ nvcc ./2D/2d_main.cu -o 2d.out -lcufft -O3 --use_fast_math --gpu-architecture=sm
 nvcc ./3D/3d_main.cu -o 3d.out -lcufft -O3 --use_fast_math --gpu-architecture=sm_xx
 ```
 
-  
+
+## How to Use FlashFFTStencil
+
+You can run `FlashFFTStencil` in the following input format.
+```
+flashfftstencil_program shape input_size time_interation_size options
+```
+- `convstencil_program` can be chosen from `convstencil_1d`, `convstencil_2d`, and `convstencil_3d` for different dimensions.
+- `shape` can be chosen by the different dimension:
+    - `Heat-1D`, `1D5P` and `1D7P` for 1D
+    - `Heat-2D`, `Box2D9P`, `Star2D9P` and `Box2D25P` for 2D
+    - `Heat-3D` and `Box3d27P` for 3D
+- `input_size` depends on the number of dimensions; the number of inputs required is equal to the number of dimensions.
+- `time_interation_size` is the iteration time.
+- `options`:
+    - `--help` prints the help information.
+    - `--custom` inputs the custom stencil kernel weights.
+
+
 
 
