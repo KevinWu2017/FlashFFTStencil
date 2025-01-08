@@ -59,4 +59,14 @@ flashfftstencil_program shape input_size time_interation_size options
 
 
 
+## Reference
+
+Haozhi Han, Kun Li, Wei Cui, Donglin Bai, Yiwei Zhang, Liang
+Yuan, Yifeng Chen, Yunquan Zhang, Ting Cao, and Mao Yang. 2025.
+FlashFFTStencil: Bridging Fast Fourier Transforms to Memory-
+Efficient Stencil Computations on Tensor Core Units. In The 30th
+ACM SIGPLAN Annual Symposium on Principles and Practice of
+Parallel Programming (PPoPP ’25), March 1–5, 2025, Las Vegas, NV,
+USA. ACM, New York, NY, USA, 14 pages. https://doi.org/10.1145/
+3710848.3710897
 
