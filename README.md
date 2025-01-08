@@ -46,7 +46,7 @@ You can run `FlashFFTStencil` in the following input format.
 ```
 flashfftstencil_program shape input_size time_interation_size options
 ```
-- `convstencil_program` can be chosen from `convstencil_1d`, `convstencil_2d`, and `convstencil_3d` for different dimensions.
+- `flashfftstencil_program` can be chosen from `1d`, `2d`, and `3d` for different dimensions.
 - `shape` can be chosen by the different dimension:
     - `Heat-1D`, `1D5P` and `1D7P` for 1D
     - `Heat-2D`, `Box2D9P`, `Star2D9P` and `Box2D25P` for 2D
