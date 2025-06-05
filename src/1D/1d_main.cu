@@ -81,12 +81,12 @@ int main(int argc, char *argv[])
         std::cerr << "input_size = " << INPUT_SIZE << std::endl;
         return 0.0;
     }
-    else
-    {
-        std::cout << "INFO: stencil kernel shape = " << kernel_shape << std::endl;
-        std::cout << "INFO: input size = " << INPUT_SIZE << std::endl;
-        std::cout << "INFO: times step = " << time << std::endl;
-    }
+    // else
+    // {
+    //     std::cout << "INFO: stencil kernel shape = " << kernel_shape << std::endl;
+    //     std::cout << "INFO: input size = " << INPUT_SIZE << std::endl;
+    //     std::cout << "INFO: times step = " << time << std::endl;
+    // }
 
     const int rfft_allnum = INPUT_SIZE / sub_input_size;
 
@@ -181,8 +181,18 @@ int main(int argc, char *argv[])
 
     // compute time
     checkCudaErrors(cudaEventElapsedTime(&elapsedTime, start, stop));
-    std::cout << "Time = " << elapsedTime << "[ms]" << std::endl;
-    printf("GStencil/s = %f\n\n", (INPUT_SIZE * ((KERNEL_SIZE -1) / 2)) * after_fusion_time / elapsedTime / 1e6);
+    // std::cout << "Time = " << elapsedTime << "[ms]" << std::endl;
+    // printf("GStencil/s = %f\n\n", (INPUT_SIZE * ((KERNEL_SIZE -1) / 2)) * after_fusion_time / elapsedTime / 1e6);
+
+    std::string kernel_shape_output;
+    if (kernel_shape == "Heat-1D")
+        kernel_shape_output = "1d1r";
+    else if (kernel_shape == "1D5P")
+        kernel_shape_output = "1d2r";
+    else if (kernel_shape == "1D7P")
+        kernel_shape_output = "1d3r";
+
+    std::cout << "FlashFFTStencil, " << kernel_shape_output << ", 1, 1, " << INPUT_SIZE << ", " << time << ", " << elapsedTime << ", " << (INPUT_SIZE * ((KERNEL_SIZE -1) / 2)) * after_fusion_time / elapsedTime / 1e6 << std::endl;
 
     cudaMemcpy(h_output, d_output, mem_size_output, cudaMemcpyDeviceToHost);
 

@@ -64,12 +64,12 @@ int main(int argc, char *argv[])
         std::cerr << "input_size = " << INPUT_WIDTH << std::endl;
         return 0.0;
     }
-    else
-    {
-        std::cout << "INFO: stencil kernel shape = " << kernel_shape << std::endl;
-        std::cout << "INFO: input width = " << INPUT_WIDTH << std::endl;
-        std::cout << "INFO: times step = " << time << std::endl;
-    }
+    // else
+    // {
+    //     std::cout << "INFO: stencil kernel shape = " << kernel_shape << std::endl;
+    //     std::cout << "INFO: input width = " << INPUT_WIDTH << std::endl;
+    //     std::cout << "INFO: times step = " << time << std::endl;
+    // }
 
     const unsigned int block_num_x = (INPUT_WIDTH / sub_input_width) / 2 / nwarp_in_block;
     const unsigned int block_num_y = (INPUT_WIDTH / sub_input_width);
@@ -174,7 +174,15 @@ int main(int argc, char *argv[])
 
     // compute time
     checkCudaErrors(cudaEventElapsedTime(&elapsedTime, start, stop));
-    std::cout << "Time = " << elapsedTime << "[ms]" << std::endl;
+    // std::cout << "Time = " << elapsedTime << "[ms]" << std::endl;
+
+    std::string kernel_shape_output;
+    if (kernel_shape == "Heat-2D")
+        kernel_shape_output = "star_2d1r";
+    else if (kernel_shape == "Box2D9P")
+        kernel_shape_output = "box_2d1r";
+
+    std::cout << "FlashFFTStencil, " << kernel_shape_output << ", 1, " << INPUT_WIDTH << ", " << INPUT_WIDTH << ", " << time << ", " << elapsedTime << ", " << ((double)INPUT_WIDTH * INPUT_WIDTH * time) / elapsedTime / 1e6 << std::endl;
 
     cudaMemcpy(h_output, d_output, mem_size_output, cudaMemcpyDeviceToHost);
 
